@@ -10,8 +10,8 @@ function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toUpperCase();
 
-    console.log(playerSelection);
-    console.log(computerSelection);
+    // console.log('You chose ' + playerSelection);
+    // console.log('The computer chose ' + computerSelection);
 
     if(computerSelection === 'ROCK' && playerSelection != 'ROCK') {
         if(playerSelection === 'PAPER') {
@@ -72,9 +72,11 @@ function game(){
         else {
             console.log("It's a draw!");
         }
-
-    console.log(playerScore)
-    console.log(computerScore)
+        
+    console.log('You chose ' + playerSelection);
+    console.log('The computer chose ' + computerSelection);
+    console.log('You: ' + playerScore)
+    console.log('Computer: ' + computerScore)
     }
 
     console.log(x);
