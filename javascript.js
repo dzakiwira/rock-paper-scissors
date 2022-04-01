@@ -1,7 +1,7 @@
 
 // Randomly picks between ROCK, PAPER, or SCISSORS
 function computerPlay() {
-    let pick = ['ROCK', 'PAPER', 'SCISSORS']
+    const pick = ['ROCK', 'PAPER', 'SCISSORS']
     return pick[Math.floor(Math.random() * 3)]
 }
 
@@ -72,7 +72,7 @@ function game(){
         else {
             console.log("It's a draw!");
         }
-        
+
     console.log('You chose ' + playerSelection);
     console.log('The computer chose ' + computerSelection);
     console.log('You: ' + playerScore)
