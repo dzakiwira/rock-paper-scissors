@@ -9,7 +9,6 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toUpperCase();
-    // computerSelection = computerPlay();
 
     console.log(playerSelection);
     console.log(computerSelection);
@@ -52,22 +51,23 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Runs through whole game until winner is established
 function game(){
 
-    let playerScore = 0;
-    let computerScore = 0;
-    // let playerSelection = prompt("Type ond of Rock, Paper, Scissors");
-    // const computerSelection = computerPlay()
+    let x = 0;
+    let y = 0;
 
     for (let playerScore = 0, computerScore = 0; computerScore < 5 && playerScore <5;) {
         let playerSelection = prompt("Type ond of Rock, Paper, Scissors");
         const computerSelection = computerPlay();
 
         if (playRound(playerSelection, computerSelection)) {
-            playerScore++;
+            x = ++playerScore;
+            
         }
         else if(playRound(playerSelection, computerSelection) === false){
-            computerScore++;
+            y = ++computerScore;
+            
         }
         else {
             console.log("It's a draw!");
@@ -76,15 +76,17 @@ function game(){
     console.log(playerScore)
     console.log(computerScore)
     }
-    console.log(playerScore)
-    console.log(computerScore)
 
+    console.log(x);
+    console.log(y);
 
+    if (x === 5) {
+        alert("You Win!!!!!1!!!!1!11!!!!!!111!")
+    }
+    else {
+        alert("You're fucking shite mate")
+    }
 
-
-    // console.log(playRound(playerSelection, computerSelection));
-    // console.log(playerScore)
-    // console.log(computerScore)
 }
 
 
