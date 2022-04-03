@@ -9,6 +9,7 @@ buttons.forEach((buttons) => {
         results.setAttribute('style', 'white-space: pre-wrap;');
         results.textContent = ' ';
         results.textContent += `${playRound(buttons.id, computerPlay())}\n Your score is: ${playerScore}\n Computer score is: ${computerScore}`;
+        checkWinner(playerScore, computerScore);
 
     })
 })
@@ -18,10 +19,10 @@ buttons.forEach((buttons) => {
 function checkWinner(playerScore, computerScore) {
 
     if (playerScore === 5) {
-        results.textContent = "You have beat the computer";
+        results.textContent = `You have beat the computer ${playerScore} - ${computerScore}`;
     }
     else if (computerScore === 5){
-        results.textContent = "You have lost to the computer";
+        results.textContent = `You have lost to the computer ${playerScore} - ${computerScore}`;
     }
 
 }
