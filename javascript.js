@@ -1,8 +1,35 @@
+const buttons = document.querySelectorAll('button');
+const results = document.querySelector('#results');
+
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach((buttons) => {
+    buttons.addEventListener('click', () => {
+        results.setAttribute('style', 'white-space: pre-wrap;');
+        results.textContent = ' ';
+        results.textContent += `${playRound(buttons.id, computerPlay())}\n Your score is: ${playerScore}\n Computer score is: ${computerScore}`;
+
+    })
+})
+
+
+// Checks round wins for winner
+function checkWinner(playerScore, computerScore) {
+
+    if (playerScore === 5) {
+        results.textContent = "You have beat the computer";
+    }
+    else if (computerScore === 5){
+        results.textContent = "You have lost to the computer";
+    }
+
+}
 
 // Randomly picks between ROCK, PAPER, or SCISSORS
 function computerPlay() {
-    const pick = ['ROCK', 'PAPER', 'SCISSORS']
-    return pick[Math.floor(Math.random() * 3)]
+    const pick = ['ROCK', 'PAPER', 'SCISSORS'];
+    return pick[Math.floor(Math.random() * pick.length)];
 }
 
 // Plays a round and returns the winner
@@ -10,86 +37,40 @@ function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toUpperCase();
 
-    // console.log('You chose ' + playerSelection);
-    // console.log('The computer chose ' + computerSelection);
-
     if(computerSelection === 'ROCK' && playerSelection != 'ROCK') {
         if(playerSelection === 'PAPER') {
             outcome = 'You Win! PAPER beats ROCK.';
-            return true;
+            playerScore++;
         }
         else {
             outcome = 'You Lose! ROCK beats SCISSORS.';
-            return false;
+            computerScore++;
         }
     }
 
     else if(computerSelection === 'PAPER' && playerSelection != 'PAPER') {
         if(playerSelection === 'SCISSORS') {
             outcome = 'You Win! SCISSORS beats PAPER.';
-            return true;
+            playerScore++;
         }
         else {
             outcome = 'You Lose! PAPER beats ROCK.';
-            return false;
+            computerScore++;
         }
     }
 
     else if(computerSelection === 'SCISSORS' && playerSelection != 'SCISSORS') {
         if(playerSelection === 'ROCK') {
             outcome = 'You Win! ROCK beats SCISSORS.';
-            return true;
+            playerScore++;
         }
         else {
             outcome = 'You Lose! SCISSORS beats PAPER.';
-            return false;
+            computerScore++;
         }
-    }
-
-    else {
-        return null;
-    }
-}
-
-// Runs through whole game until winner is established
-function game(){
-
-    let x = 0;
-    let y = 0;
-
-    for (let playerScore = 0, computerScore = 0; computerScore < 5 && playerScore <5;) {
-        let playerSelection = prompt("Type ond of Rock, Paper, Scissors");
-        const computerSelection = computerPlay();
-
-        if (playRound(playerSelection, computerSelection)) {
-            x = ++playerScore;
-            
-        }
-        else if(playRound(playerSelection, computerSelection) === false){
-            y = ++computerScore;
-            
-        }
-        else {
-            console.log("It's a draw!");
-        }
-
-    console.log('You chose ' + playerSelection);
-    console.log('The computer chose ' + computerSelection);
-    console.log('You: ' + playerScore)
-    console.log('Computer: ' + computerScore)
-    }
-
-    console.log(x);
-    console.log(y);
-
-    if (x === 5) {
-        alert("You Win!!!!!1!!!!1!11!!!!!!111!")
     }
     else {
-        alert("You're fucking shite mate")
+        return "It's a draw!";
     }
-
+    return outcome;
 }
-
-
-game();
